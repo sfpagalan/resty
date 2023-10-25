@@ -1,7 +1,13 @@
+import React from 'react';
+
 function Results(props) {
   return (
     <section>
-      <pre>{props.data ? JSON.stringify(props.data, undefined, 2) : null}</pre>
+      {props.data ? (
+        <pre>{JSON.stringify(props.data, undefined, 2)}</pre>
+      ) : (
+        <p>Loading...</p>
+      )}
     </section>
   );
 }
