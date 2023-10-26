@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
-import './Form.scss';
 
 function Form(props) {
   const [url, setUrl] = useState('');
   const [method, setMethod] = useState('GET');
   const [requestBody, setRequestBody] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = {
       method: method,
       url: url,
       ...(requestBody && { body: JSON.parse(requestBody) }),
     };
-    props.handleApiCall(formData);
+
+    await props.handleApiCall(formData);
   }
 
   return (
